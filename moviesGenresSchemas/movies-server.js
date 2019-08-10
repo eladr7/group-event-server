@@ -22,6 +22,54 @@ const addMovie = (data, req, res) => {
   });
 };
 
+//-----------------------------------------
+//*****************************************
+//-----------------------------------------
+
+// // this is our update method
+// // this method overwrites existing data in our database
+// router.post('/updateData', (req, res) => {
+//   const { id, update } = req.body;
+//   Data.findByIdAndUpdate(id, update, (err) => {
+//     if (err) return res.json({ success: false, error: err });
+//     return res.json({ success: true });
+//   });
+// });
+
+//-----------------------------------------
+//*****************************************
+//-----------------------------------------
+
+// this is our delete method
+// this method removes existing data in our database
+router.delete('/deleteMovie/Comedy', (req, res) => {
+  const { id } = req.body;
+  Comedy.findOneAndRemove(id, (err) => {
+    if (err) { console.log("server id is: " + id); return res.send(err);}
+    return res.json({ success: true });
+  });
+});
+
+router.delete('/deleteMovie/Drama', (req, res) => {
+  const { id } = req.body;
+  Drama.findOneAndRemove(id, (err) => {
+    if (err) { console.log("server id is: " + id); return res.send(err);}
+    return res.json({ success: true });
+  });
+});
+
+router.delete('/deleteMovie/Fantasy', (req, res) => {
+  const { id } = req.body;
+  Fantasy.findOneAndRemove(id, (err) => {
+    if (err) { console.log("server id is: " + id); return res.send(err);}
+    return res.json({ success: true });
+  });
+});
+
+//-----------------------------------------
+//*****************************************
+//-----------------------------------------
+
 // this is our create methid
 // this method adds new data in our database
 router.post('/putMovie/Comedy', (req, res) => {
@@ -84,6 +132,10 @@ router.post('/putMovie/Fantasy', (req, res) => {
     return res.json({ success: true });
   });
 });
+
+//-----------------------------------------
+//*****************************************
+//-----------------------------------------
 
 // this is our get method
 // this method fetches all available data in our database
