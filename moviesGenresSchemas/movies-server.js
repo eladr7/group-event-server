@@ -44,7 +44,7 @@ const addMovie = (data, req, res) => {
 // this method removes existing data in our database
 router.delete('/deleteMovie/Comedy', (req, res) => {
   const { id } = req.body;
-  Comedy.findOneAndRemove(id, (err) => {
+  Comedy.findOneAndDelete(id, (err) => {
     if (err) { console.log("server id is: " + id); return res.send(err);}
     return res.json({ success: true });
   });
